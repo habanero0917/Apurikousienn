@@ -1,0 +1,56 @@
+
+#import "GameScene.h"
+
+@implementation GameScene {
+    SKSpriteNode *sikaku;
+    SKSpriteNode *tora;
+    
+    BOOL *scene;
+}
+
+-(void)didMoveToView:(SKView *)view {
+    scene = YES;
+    SKSpriteNode *ozi = [SKSpriteNode spriteNodeWithImageNamed:@"doubutu.jpg"];
+    
+    ozi.xScale = 2;
+    ozi.yScale = 1.2;
+    
+    ozi.position = CGPointMake(500, 400);
+    
+    [self addChild:ozi];
+    
+    sikaku = [SKSpriteNode spriteNodeWithImageNamed:@"sikaku.jpg"];
+    
+    sikaku.xScale = 0.5;
+    sikaku.yScale = 0.5;
+    
+    sikaku.position = CGPointMake(515, 473);
+    
+    [self addChild:sikaku];
+    
+   }
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    for (UITouch *touch in touches) {
+        CGPoint location = [touch locationInNode:self];
+        if ([sikaku containsPoint:location]) {
+            NSLog(@"TOUCH!!!!!!!");
+            
+            tora = [SKSpriteNode spriteNodeWithImageNamed:@"tora.jpg"];
+            
+            tora.xScale = 0.9;
+            tora.yScale = 0.6;
+            
+            tora.position = CGPointMake(500, 400);
+            
+            [self addChild:tora];
+        }
+    }
+}
+
+
+-(void)update:(CFTimeInterval)currentTime {
+    /* Called before each frame is rendered */
+}
+
+@end
